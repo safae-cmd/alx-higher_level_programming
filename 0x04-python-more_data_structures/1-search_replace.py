@@ -1,9 +1,4 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    new = []
-    for i in my_list:
-        if i = search:
-            new.append(replace)
-        else:
-            new.append(i)
+            new = list(map(lamda a: replace if a == search else a, my_list))
     return new
