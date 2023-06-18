@@ -6,22 +6,21 @@
  * @list: pointer to the list
  * Return: true or false
  */
-bool check_cycle(listint_t *list)
+int check_cycle(listint_t *list)
 {
-	listint_t *previous, *current;
+	listint_t *current, *previous;
 
-	if (list == NULL || list->next == NULL)
-	{
-		return (false);
-	}
-	previous = list;
+	if (!list)
+		return (0);
+
 	current = list;
-	while (current != NULL && current->next != NULL)
+	previous = list;
+	while (current && previous && previous->next)
 	{
-		previous = previous->next;
-		current = current->next->next;
-		if (previous == current)
-			return (true);
+		current = current->next;
+		previous = ->next->next;
+		if (previous == current || previous == list)
+			return (1);
 	}
-	return (false);
+	return (0);
 }
