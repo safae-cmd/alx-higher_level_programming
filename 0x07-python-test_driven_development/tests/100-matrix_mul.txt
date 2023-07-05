@@ -1,0 +1,54 @@
+# Test case 1: Valid multiplication
+m_a = [[1, 2, 3], [4, 5, 6]]
+m_b = [[7, 8], [9, 10], [11, 12]]
+expected_result = [[58, 64], [139, 154]]
+result = matrix_mul(m_a, m_b)
+assert result == expected_result
+
+# Test case 2: Invalid multiplication (incompatible dimensions)
+m_a = [[1, 2, 3], [4, 5, 6]]
+m_b = [[7, 8], [9, 10]]
+try:
+    result = matrix_mul(m_a, m_b)
+except ValueError as e:
+    assert str(e) == "m_a and m_b can't be multiplied"
+
+# Test case 3: Invalid input (not a list)
+m_a = 123
+m_b = [[1, 2], [3, 4]]
+try:
+    result = matrix_mul(m_a, m_b)
+except TypeError as e:
+    assert str(e) == "m_a must be a list or m_b must be a list"
+
+# Test case 4: Invalid input (not a list of lists)
+m_a = [[1, 2], [3, 4]]
+m_b = [1, 2]
+try:
+    result = matrix_mul(m_a, m_b)
+except TypeError as e:
+    assert str(e) == "m_a must be a list of lists or m_b must be a list of lists"
+
+# Test case 5: Empty matrix
+m_a = [[]]
+m_b = [[1, 2], [3, 4]]
+try:
+    result = matrix_mul(m_a, m_b)
+except ValueError as e:
+    assert str(e) == "m_a can't be empty or m_b can't be empty"
+
+# Test case 6: Invalid input (non-numeric element)
+m_a = [[1, 2], [3, 'four']]
+m_b = [[1, 2], [3, 4]]
+try:
+    result = matrix_mul(m_a, m_b)
+except TypeError as e:
+    assert str(e) == "m_a should contain only integers or floats"
+
+# Test case 7: Valid multiplication with floating-point numbers
+m_a = [[1.5, 2.5], [3.5, 4.5]]
+m_b = [[2.5, 3.5], [4.5, 5.5]]
+expected_result = [[12.5, 16.25], [26.25, 34.25]]
+result = matrix_mul(m_a, m_b)
+assert result == expected_result
+
