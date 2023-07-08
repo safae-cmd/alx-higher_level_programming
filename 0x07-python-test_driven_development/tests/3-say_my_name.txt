@@ -5,6 +5,10 @@ from io import StringIO
 class TestSayMyName(unittest.TestCase):
 
     def test_say_my_name(self):
+        """
+        Test cases for say_my_name function.
+        """
+
         # Redirect stdout to capture the output
         saved_stdout = sys.stdout
         output = StringIO()
